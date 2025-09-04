@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="fr"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portfolio - Nom Prénom</title>
+  <link href="portfolio_fichiers/css2.css" rel="stylesheet">
+  <style>
+    :root{
+      --accent:#0fdbd0; 
+      --dark:#111111;
+      --light:#f9f9f9;
+      --text:#333333;
+      --bg-project:#f4f3f8; 
+      --bg-skill-section:#f4f3f8; 
+      --bg-about:#f4f3f8;
+      --border-project:#c0c0c0; 
+      --border-about:#000000;
+    }
+
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:'Poppins',sans-serif;background:var(--light);color:var(--text);line-height:1.6;}
+    a{text-decoration:none;color:inherit;transition:.3s;}
+    a:hover{color:var(--accent);}
+
+    /* ===== HEADER ===== */
+    header{
+      background:var(--dark);
+      color:#fff;
+      padding:18px 50px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      position:sticky;
+      top:0;
+      z-index:100;
+    }
+    header h1{font-size:22px;font-weight:700;}
+    header h1 span{color:var(--accent);}
+    nav ul{list-style:none;display:flex;gap:30px;}
+    nav a{color:#fff;font-weight:500;position:relative;}
+    nav a.active{color:var(--accent);}
+
+    /* ===== BUTTONS ===== */
+    .btn{
+      display:inline-block;
+      background:var(--accent);
+      color:#fff;
+      padding:12px 22px;
+      border-radius:6px;
+      font-weight:600;
+      cursor:pointer;
+      transition:.3s;
+    }
+    .btn:hover{opacity:.9;}
+
+    /* ===== HERO ===== */
+    .hero{
+      background:#fff;
+      padding:80px 10%;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:40px;
+      flex-wrap:wrap;
+    }
+    .hero-text{flex:1;}
+    .hero-text h2{font-size:32px;margin-bottom:20px;}
+    .hero-text h2 span{color:var(--accent);}
+    .hero-illu{flex:1;display:flex;justify-content:center;}
+    .hero-illu img{width:420px;max-width:100%;}
+
+    /* ===== ABOUT ===== */
+    .about{
+      background:var(--bg-about);
+      padding:80px 10%;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:50px;
+      flex-wrap:wrap;
+      border-left:1px solid var(--border-about);
+      border-right:1px solid var(--border-about);
+      border-bottom:1px solid var(--border-about);
+    }
+    .about-text{flex:1;max-width:620px;}
+    .about-text h3{font-size:22px;color:var(--accent);margin-bottom:18px;}
+    .about-text p{margin-bottom:16px;font-size:15px;}
+    .about-photo img{
+      width:180px;height:180px;
+      object-fit:cover;border-radius:50%;
+      border:3px solid var(--accent);
+    }
+
+    /* ===== SECTION TITLES ===== */
+    .section{padding:80px 10%;}
+    .section-title{
+      text-align:center;
+      font-size:22px;
+      margin-bottom:40px;
+      color:var(--accent);
+    }
+
+    /* ===== PROJECTS ===== */
+    .projects-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:30px;
+    }
+    .card{
+      background:var(--bg-project);
+      border-radius:12px;
+      padding:24px;
+      text-align:center;
+      border:1px solid #c0c0c0;
+    }
+    .card p{font-size:14px;margin-bottom:12px;}
+    .card small{display:block;margin-bottom:12px;color:#777;}
+
+    /* ===== SKILLS ===== */
+    .skills-section{
+      background:var(--bg-skill-section);
+      padding:40px;
+      border-radius:12px;
+    }
+    .skills-grid{
+      display:flex;
+      flex-wrap:wrap;
+      gap:30px;
+      justify-content:center;
+    }
+    .skill-box{
+      background:#fff;
+      border-radius:12px;
+      padding:50px;
+      width:480px;
+      box-shadow:0 4px 12px rgba(0,0,0,0.05);
+    }
+    .skill-box h4{margin-bottom:18px;font-size:16px;}
+    .bar{margin-bottom:18px;}
+    .bar label{display:block;font-size:14px;margin-bottom:6px;}
+    .progress{
+      height:10px;
+      border-radius:5px;
+      background:#eee;
+      overflow:hidden;
+    }
+    .progress div{
+      height:100%;
+      background:var(--accent);
+      width:0;
+      transition:width 1s ease;
+    }
+
+    /* ===== CONTACT ===== */
+    #contact{
+      background:var(--dark);
+      color:#fff;
+      text-align:center;
+      padding:80px 10%;
+    }
+
+    #contact h3.section-title {
+      margin-bottom:10px;
+      font-size:26px;
+    }
+
+    #contact h3.section-title .white-text {
+      color: #fff;
+    }
+
+    #contact form {
+      max-width: 600px;
+      margin: 20px auto 0 auto;
+    }
+
+    #contact .row {
+      display: flex;
+      justify-content: space-between;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      text-align: left;
+    }
+
+    .form-group label {
+      margin-bottom: 8px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    input, textarea {
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      outline: none;
+      width: 100%;
+      font-size: 14px;
+    }
+
+    textarea {
+      height: 150px;
+      resize: none;
+    }
+
+    button {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      padding: 12px;
+      border-radius: 5px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      width: 150px;
+      margin: 20px auto 0 auto;
+      display: block;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background-color:#f8f9fa;
+      color: rgb(8, 6, 6);
+      font-size: 14px;
+      flex-wrap: wrap;
+    }
+
+    .footer-left, .footer-right {
+      margin: 5px 0;
+    }
+
+    .eugenie {
+      color: var(--accent);
+    }
+  </style>
+</head>
+<body>
+  <!-- ===== HEADER ===== -->
+  <header>
+    <h1>AGBODAN <span>EUGENIE AFI</span></h1>
+    <nav>
+      <ul>
+        <li><a class="active" href="#">Accueil</a></li>
+        <li><a href="#about">À propos</a></li>
+        <li><a href="#projects">Projets</a></li>
+        <li><a href="#skills">Compétences</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="hero-text">
+      <h2>Je suis <span>Eugenie</span>, Développeuse en devenir passionnée par le web et le design !</h2>
+      <a href="#projects" class="btn">Voir mes projets</a>
+    </div>
+    <div class="hero-illu">
+      <img src="Image.jpg" alt="Illustration d'accueil">
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section id="about" class="about">
+    <div class="about-text">
+      <h3>À propos</h3>
+      <p>Je m’appelle <strong>AGBODAN</strong>, passionnée par la création de sites web modernes et interactifs.</p>
+      <p>Je suis actuellement étudiante en <strong>développement web</strong>, et je cherche à améliorer mes compétences en JavaScript, HTML et CSS.</p>
+      <p>J’adore transformer mes idées en projets concrets et expérimenter avec les nouvelles technologies.</p>
+      <a class="btn" href="file:///C:/Users/DELL/Desktop/Projet/cv.pdf" target="_blank">Télécharger mon CV</a>
+    </div>
+    <div class="about-photo">
+      <img src="Photo.jpg" alt="Photo de profil">
+    </div>
+  </section>
+
+  <!-- ===== PROJETS ===== -->
+  <section id="projects" class="section">
+    <h3 class="section-title">Mes Projets</h3>
+    <div class="projects-grid">
+      <div class="card">
+        <p>Un mini-jeu interactif en JavaScript qui utilise des événements DOM.</p>
+        <small>#html, #css, #js</small>
+        <a href="#" class="btn">Voir</a>
+      </div>
+      <div class="card">
+        <p>Un mini-jeu interactif en JavaScript qui utilise des événements DOM.</p>
+        <small>#html, #css, #js</small>
+        <a href="#" class="btn">Voir</a>
+      </div>
+      <div class="card">
+        <p>Un mini-jeu interactif en JavaScript qui utilise des événements DOM.</p>
+        <small>#html, #css, #js</small>
+        <a href="#" class="btn">Voir</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== COMPÉTENCES ===== -->
+  <section id="skills" class="section skills-section">
+    <h3 class="section-title" style="color:#000;">Mes Compétences</h3>
+    <div class="skills-grid">
+      <div class="skill-box">
+        <h4>Soft Skills</h4>
+        <div class="bar"><label>Gestion de projet</label><div class="progress"><div class="gestion" style="width: 90%;"></div></div></div>
+        <div class="bar"><label>Résolution de problème</label><div class="progress"><div class="resolution" style="width: 85%;"></div></div></div>
+        <div class="bar"><label>Adaptabilité</label><div class="progress"><div class="adapt" style="width: 80%;"></div></div></div>
+      </div>
+      <div class="skill-box">
+        <h4>Hard Skills</h4>
+        <div class="bar"><label>HTML</label><div class="progress"><div class="html" style="width: 95%;"></div></div></div>
+        <div class="bar"><label>CSS</label><div class="progress"><div class="css" style="width: 85%;"></div></div></div>
+        <div class="bar"><label>JavaScript</label><div class="progress"><div class="js" style="width: 70%;"></div></div></div>
+        <div class="bar"><label>VS Code</label><div class="progress"><div class="vscode" style="width: 80%;"></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section id="contact">
+    <h3 class="section-title"><span class="white-text">Vous avez un</span> <span class="accent">projet en tête</span> ?</h3>
+    <h3 class="section-title"><span class="white-text">N'hésitez pas à me</span> <span class="accent">contacter</span></h3>
+    <form id="contactForm">
+      <div class="row">
+        <div class="form-group">
+          <label for="prenom">Votre prénom</label>
+          <input type="text" id="prenom" name="prenom">
+        </div>
+        <div class="form-group">
+          <label for="nom">Votre nom</label>
+          <input type="text" id="nom" name="nom">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="sujet">Votre sujet</label>
+        <input type="text" id="sujet" name="sujet">
+      </div>
+      <div class="form-group">
+        <label for="message">Écrivez votre message ici !</label>
+        <textarea id="message" name="message"></textarea>
+      </div>
+      <button type="submit">Envoyer</button>
+    </form>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-left">Designed by <span class="eugenie">Eugenie</span> with HTML CSS JS</div>
+    <div class="footer-right">Tous droits réservés - 2025</div>
+  </footer>
+
+  <script>
+    // Animation barres compétences
+    window.addEventListener("load", () => {
+      document.querySelector(".gestion").style.width = "90%";
+      document.querySelector(".resolution").style.width = "85%";
+      document.querySelector(".adapt").style.width = "80%";
+      document.querySelector(".html").style.width = "95%";
+      document.querySelector(".css").style.width = "85%";
+      document.querySelector(".js").style.width = "70%";
+      document.querySelector(".vscode").style.width = "80%";
+    });
+
+    // Formulaire Contact
+    document.getElementById("contactForm").addEventListener("submit", function(e){
+      e.preventDefault();
+      alert("Merci pour votre message");
+      this.reset();
+    });
+  </script>
+
+
+</body></html>
